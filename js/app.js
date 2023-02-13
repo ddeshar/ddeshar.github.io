@@ -110,7 +110,7 @@ const ucapan = async () => {
         }
     };
 
-    await fetch('https://abm-api.test/api/comment', REQ)
+    await fetch('https://abw-api.vercel.app/api/comment', REQ)
         .then((res) => res.json())
         .then((res) => {
             if (res.code == 200) {
@@ -142,7 +142,7 @@ const login = async () => {
         })
     };
 
-    await fetch('https://abm-api.test/api/login', REQ)
+    await fetch('https://abw-api.vercel.app/api/login', REQ)
         .then((res) => res.json())
         .then((res) => {
             if (res.code == 200) {
@@ -213,7 +213,7 @@ const kirim = async () => {
         })
     };
 
-    await fetch('https://abm-api.test/api/comment', REQ)
+    await fetch('https://abw-api.vercel.app/api/comment', REQ)
         .then((res) => res.json())
         .then((res) => {
             if (res.code == 201) {
