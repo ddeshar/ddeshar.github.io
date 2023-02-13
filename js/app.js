@@ -33,23 +33,32 @@ const salin = (btn) => {
 
 const timer = () => {
     let tanggal = document.getElementById('tampilan-waktu').getAttribute('data-waktu').toString();
-    let countDownDate = new Date(tanggal).getTime();
+    let countDownDate = Date.parse(tanggal.replace(/-/g, '/'));
     let time = null;
 
     time = setInterval(() => {
-        let distance = countDownDate - (new Date().getTime());
+        let now = Date.now();
+        let distance = Math.max(countDownDate - now, 0);
 
-        if (distance < 0) {
+        if (distance === 0) {
             clearInterval(time);
             return false;
         } else {
-            document.getElementById('hari').innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
-            document.getElementById('jam').innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            document.getElementById('menit').innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            document.getElementById('detik').innerText = Math.floor((distance % (1000 * 60)) / 1000);
+            let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('hari').innerText = days;
+            document.getElementById('jam').innerText = hours;
+            document.getElementById('menit').innerText = minutes;
+            document.getElementById('detik').innerText = seconds;
         }
     }, 1000);
 };
+
+
+
 
 const buka = () => {
     document.getElementById('loading').style.display = 'none';
@@ -110,7 +119,7 @@ const ucapan = async () => {
         }
     };
 
-    await fetch('https://abm-api.test/api/comment', REQ)
+    await fetch('https://abw-api.vercel.app/api/comment', REQ)
         .then((res) => res.json())
         .then((res) => {
             if (res.code == 200) {
@@ -142,7 +151,7 @@ const login = async () => {
         })
     };
 
-    await fetch('https://abm-api.test/api/login', REQ)
+    await fetch('https://abw-api.vercel.app/api/login', REQ)
         .then((res) => res.json())
         .then((res) => {
             if (res.code == 200) {
@@ -213,7 +222,7 @@ const kirim = async () => {
         })
     };
 
-    await fetch('https://abm-api.test/api/comment', REQ)
+    await fetch('https://abw-api.vercel.app/api/comment', REQ)
         .then((res) => res.json())
         .then((res) => {
             if (res.code == 201) {
