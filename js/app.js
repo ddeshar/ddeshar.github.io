@@ -37,19 +37,26 @@ const timer = () => {
     let time = null;
 
     time = setInterval(() => {
-        let distance = countDownDate - (new Date().getTime());
+        let now = new Date().getTime();
+        let distance = Math.max(countDownDate - now, 0);
 
-        if (distance < 0) {
+        if (distance === 0) {
             clearInterval(time);
             return false;
         } else {
-            document.getElementById('hari').innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
-            document.getElementById('jam').innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            document.getElementById('menit').innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            document.getElementById('detik').innerText = Math.floor((distance % (1000 * 60)) / 1000);
+            let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('hari').innerText = days;
+            document.getElementById('jam').innerText = hours;
+            document.getElementById('menit').innerText = minutes;
+            document.getElementById('detik').innerText = seconds;
         }
     }, 1000);
 };
+
 
 const buka = () => {
     document.getElementById('loading').style.display = 'none';
