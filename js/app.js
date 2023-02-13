@@ -33,7 +33,7 @@ const salin = (btn) => {
 
 const timer = () => {
     let tanggal = document.getElementById('tampilan-waktu').getAttribute('data-waktu').toString();
-    let countDownDate = new Date(tanggal).getTime();
+    let countDownDate = new Date(tanggal.replace(/-/g, '/')).getTime(); // Replace hyphens with slashes for compatibility with Safari on iOS
     let time = null;
 
     time = setInterval(() => {
@@ -56,6 +56,7 @@ const timer = () => {
         }
     }, 1000);
 };
+
 
 
 const buka = () => {
