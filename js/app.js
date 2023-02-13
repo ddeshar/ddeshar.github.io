@@ -127,7 +127,7 @@ const ucapan = async () => {
                 res.data.forEach((data) => UCAPAN.appendChild(renderCard(data)));
 
                 if (res.data.length == 0) {
-                    UCAPAN.innerHTML = `<div class="h6 text-center">Tidak ada data</div>`;
+                    UCAPAN.innerHTML = `<div class="h6 text-center">ไม่มีข้อมูล</div>`;
                 }
             }
         })
