@@ -190,8 +190,8 @@ const kirim = async () => {
         return;
     }
 
-    if (nama.length >= 35) {
-        alert('Maximum name length is 35');
+    if (nama.length >= 200) {
+        alert('Maximum name length is 200');
         return;
     }
 
