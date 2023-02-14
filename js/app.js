@@ -245,7 +245,7 @@ const kirim = async () => {
         .catch((err) => alert(err));
 
     document.getElementById('kirim').disabled = false;
-    document.getElementById('kirim').innerHTML = `Kirim<i class="fa-solid fa-paper-plane ms-1"></i>`;
+    document.getElementById('kirim').innerHTML = `ส่ง<i class="fa-solid fa-paper-plane ms-1"></i>`;
 };
 
 document.addEventListener('DOMContentLoaded', () => {
