@@ -127,7 +127,7 @@ const ucapan = async () => {
                 res.data.forEach((data) => UCAPAN.appendChild(renderCard(data)));
 
                 if (res.data.length == 0) {
-                    UCAPAN.innerHTML = `<div class="h6 text-center">Tidak ada data</div>`;
+                    UCAPAN.innerHTML = `<div class="h6 text-center">ไม่มีข้อมูล</div>`;
                 }
             }
         })
@@ -190,8 +190,8 @@ const kirim = async () => {
         return;
     }
 
-    if (nama.length >= 35) {
-        alert('Maximum name length is 35');
+    if (nama.length >= 200) {
+        alert('Maximum name length is 200');
         return;
     }
 
@@ -245,7 +245,7 @@ const kirim = async () => {
         .catch((err) => alert(err));
 
     document.getElementById('kirim').disabled = false;
-    document.getElementById('kirim').innerHTML = `Kirim<i class="fa-solid fa-paper-plane ms-1"></i>`;
+    document.getElementById('kirim').innerHTML = `ส่ง<i class="fa-solid fa-paper-plane ms-1"></i>`;
 };
 
 document.addEventListener('DOMContentLoaded', () => {
